@@ -38,7 +38,7 @@ export default function Home() {
           <Collapsible className="flex w-full flex-col items-start gap-2">
             <CollapsibleTrigger>
               <h2 className="text-lg md:text-xl font-bold mb-4 text-gray-700 hover:underline cursor-pointer">
-                Integration note: broker feed + AI assistant{" "}
+                Integration notes{" "}
                 <span>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -55,15 +55,15 @@ export default function Home() {
               </h2>
             </CollapsibleTrigger>
             <CollapsibleContent className="bg-gray-100 p-4 rounded-md">
-              <ul className="flex flex-col gap-4 font-mono text-sm">
+              <ul className="flex flex-col gap-4 text-sm">
                 <li>
                   <strong>Broker feed:</strong> Replace this shell with a
                   progressively‑enhanced list bound to
-                  <code className="bg-gray-200 relative rounded px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold">
+                  <code className="bg-gray-200 rounded px-[0.3rem] py-[0.2rem] font-mono">
                     /api/brokers
                   </code>{" "}
                   or a static{" "}
-                  <code className="bg-gray-200 relative rounded px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold">
+                  <code className="bg-gray-200 rounded px-[0.3rem] py-[0.2rem] font-mono">
                     brokers.json
                   </code>
                   . Use ISR or a CDN edge cache for freshness.
@@ -71,16 +71,47 @@ export default function Home() {
                 <li>
                   <strong>AI assistant:</strong> Add a lazy‑loaded chat launcher
                   that calls a serverless endpoint (e.g.,
-                  <code className="bg-gray-200 relative rounded px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold">
+                  <code className="bg-gray-200 rounded px-[0.3rem] py-[0.2rem] font-mono">
                     /api/assist
                   </code>{" "}
                   ) backed by an LLM + retrieval over broker profiles &amp;
                   jobs. Hydrate only on demand.
                 </li>
                 <li>
-                  <strong>Perf:</strong> Zero JS on initial load; ship the chat
-                  widget as a separate chunk to keep Time‑to‑First‑Byte and CLS
-                  excellent.
+                  <strong>Styling:</strong> This shell uses the{" "}
+                  <a
+                    className="text-blue-500 hover:text-blue-600 duration-500"
+                    href="https://geist-ui.dev/"
+                    target="_blank"
+                    rel="noopener noreferrer">
+                    geist-ui <span aria-hidden="true">↗</span>
+                  </a>{" "}
+                  CSS framework. Feel free to replace it with your preferred
+                  styling solution.
+                </li>
+                <li>
+                  <strong>Deployment:</strong> The easiest way to deploy your
+                  Next.js app is to use the{" "}
+                  <a
+                    className="text-blue-500 hover:text-blue-600 duration-500"
+                    href="https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme"
+                    target="_blank"
+                    rel="noopener noreferrer">
+                    Vercel Platform <span aria-hidden="true">↗</span>
+                  </a>{" "}
+                  from the creators of Next.js.
+                </li>
+                <li>
+                  <strong>Source code:</strong> You can find the source code for
+                  this app on{" "}
+                  <a
+                    className="text-blue-500 hover:text-blue-600 duration-500"
+                    href="https://github.com/payamdowlatyari/recruiting-app"
+                    target="_blank"
+                    rel="noopener noreferrer">
+                    GitHub <span aria-hidden="true">↗</span>
+                  </a>
+                  .
                 </li>
               </ul>
             </CollapsibleContent>
