@@ -1,102 +1,106 @@
-import Image from "next/image";
+import {
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger,
+} from "@/components/ui/collapsible";
 
+/**
+ * The homepage of the application.
+ *
+ * It contains a header with a title, a call-to-action, and a footer with a
+ * copyright notice and a link to the developer's website.
+ *
+ * It also contains a collapsible section with instructions on how to integrate
+ * the broker feed and AI assistant.
+ *
+ * The application is built using Next.js, and it uses the geist-ui CSS framework
+ * for styling.
+ */
 export default function Home() {
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
+    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-12 gap-16 sm:p-20">
+      <main className="flex flex-col gap-4 row-start-2 items-center max-w-4xl mx-auto">
+        <header className="flex flex-col gap-4 my-6">
+          <h1 className="text-3xl md:text-4xl font-bold text-green-600">
+            Recruiting Without Limits.
+          </h1>
+          <p className="text-xl md:text-2xl font-bold text-gray-600">
+            Speed and Scale.
+          </p>
+          <p className="text-base md:text-lg text-gray-900">
+            We’re building a new model for recruitment—combining revenue
+            sharing, a marketing engine, a competitive broker community, and an
+            AI‑driven learning platform. This is recruitment rewritten for the
+            modern era.
+          </p>
+        </header>
+        <section className="my-6 w-full">
+          <Collapsible className="flex w-full flex-col items-start gap-2">
+            <CollapsibleTrigger>
+              <h2 className="text-lg md:text-xl font-bold mb-4 text-gray-700 hover:underline cursor-pointer">
+                Integration note: broker feed + AI assistant{" "}
+                <span>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                    className="inline w-4 h-4">
+                    <path
+                      fillRule="evenodd"
+                      d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                      clipRule="evenodd"
+                    />
+                  </svg>
+                </span>
+              </h2>
+            </CollapsibleTrigger>
+            <CollapsibleContent className="bg-gray-100 p-4 rounded-md">
+              <ul className="flex flex-col gap-4 font-mono text-sm">
+                <li>
+                  <strong>Broker feed:</strong> Replace this shell with a
+                  progressively‑enhanced list bound to
+                  <code className="bg-gray-200 relative rounded px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold">
+                    /api/brokers
+                  </code>{" "}
+                  or a static{" "}
+                  <code className="bg-gray-200 relative rounded px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold">
+                    brokers.json
+                  </code>
+                  . Use ISR or a CDN edge cache for freshness.
+                </li>
+                <li>
+                  <strong>AI assistant:</strong> Add a lazy‑loaded chat launcher
+                  that calls a serverless endpoint (e.g.,
+                  <code className="bg-gray-200 relative rounded px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold">
+                    /api/assist
+                  </code>{" "}
+                  ) backed by an LLM + retrieval over broker profiles &amp;
+                  jobs. Hydrate only on demand.
+                </li>
+                <li>
+                  <strong>Perf:</strong> Zero JS on initial load; ship the chat
+                  widget as a separate chunk to keep Time‑to‑First‑Byte and CLS
+                  excellent.
+                </li>
+              </ul>
+            </CollapsibleContent>
+          </Collapsible>
+        </section>
       </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
+      <footer className="row-start-3 flex flex-col items-center justify-center">
+        <p className="text-sm text-gray-500 dark:text-gray-400">
+          Recruiting Without Limits. &copy; {new Date().getFullYear()}.
+        </p>
+        <p className="text-sm text-gray-500 dark:text-gray-400">
+          <span className="mr-2">Developed by</span>
+          <a
+            className="text-blue-500 hover:text-blue-600 duration-500"
+            href="https://www.payamd.com/"
+            target="_blank"
+            rel="noopener noreferrer">
+            payamd.com <span aria-hidden="true">↗</span>
+          </a>
+        </p>
       </footer>
     </div>
   );
